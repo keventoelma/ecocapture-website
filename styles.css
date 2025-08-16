@@ -770,7 +770,7 @@ section {
   width: 100%;
 }
 /* Center section titles for initiatives, team, and partners */
-.initiatives h2,
+.Our Initiatives h2,
 .team h2,
 .partners h2 {
   text-align: center;
@@ -778,3 +778,4 @@ section {
   margin-right: auto;
   width: 100%;
 }
+
