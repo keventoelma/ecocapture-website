@@ -1,77 +1,90 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>News & Updates | EcoCapture Solutions Ltd</title>
-  <meta name="description" content="Latest news, funding, and stories from EcoCapture Solutions Ltd.">
-  <link rel="stylesheet" href="styles.css" />
-  <link rel="icon" href="assets/logos/logo-ecocapture.png" />
-</head>
-<body>
-<header>
-  <div class="brand-banner-horizontal">
-    <img src="assets/logos/logo-ecocapture.png" alt="EcoCapture Solutions Ltd Logo" />
-    <span>EcoCapture Solutions Ltd</span>
-  </div>
-  <nav class="navbar">
-    <button class="nav-toggle" aria-label="Open navigation">&#9776;</button>
-    <ul class="nav-links">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="about.html">About Us</a></li>
-      <li><a href="solutions.html">Solutions</a></li>
-      <li><a href="impact.html">Impact</a></li>
-      <li><a href="news.html" class="active">News</a></li>
-      <li><a href="contact.html">Contact Us</a></li>
-      <li><a href="careers.html">Careers</a></li>
-      <li><a href="partner.html">Partner With Us</a></li>
-    </ul>
-  </nav>
-</header>
-<section class="news">
-  <h2 class="centered-title">News & Updates</h2>
-  <div class="news-intro" style="background:#e8f5e9;border-radius:10px;padding:1.2rem 1rem;margin-bottom:2rem;color:#234d20;">
-    <h3 style="margin-top:0;">Latest News – Empowering Farmers with Sustainable Solutions</h3>
-    <p>
-      EcoCapture Solutions is proud to announce the expansion of our farmer support program, delivering high-quality biochar-based fertilizers directly to farming communities across East Africa. By combining innovative CO₂ capture technology with advanced greenhouse solutions, we are helping farmers increase crop yields, improve soil health, and reduce environmental impact. Our recent rollout of 25kg biochar fertilizer sacks ensures affordability and accessibility, making sustainable farming a reality for more households. Together, we’re building a greener, more productive future for agriculture. 
-    </p>
-  </div>
-  <div class="news-list">
-    <article class="news-item">
-      <h3>EcoCapture Launches Rwanda's First Circular Economy Biochar Plant</h3>
-      <p>Our new facility in Kigali is turning agricultural waste into high-value biochar, supporting local farmers and reducing emissions.</p>
-      <span class="news-date">August 2025</span>
-    </article>
-    <article class="news-item">
-      <h3>EcoCapture Partners with Unipod for Greenhouse CO₂ Enrichment</h3>
-      <p>We are excited to announce a partnership with Unipod to deploy CO₂ enrichment technology in their greenhouses.</p>
-      <span class="news-date">July 2025</span>
-    </article>
-    <article class="news-item">
-      <h3>Climate Tech Africa Summit: EcoCapture Solutions Ltd Featured</h3>
-      <p>Our CEO, Kevin Iraguha, shared insights on affordable CO₂ capture at the 2025 summit in Nairobi.</p>
-      <span class="news-date">June 2025</span>
-    </article>
-    <article class="news-item">
-      <h3>EcoCapture is among TEF 2025 contestants</h3>
-      <p>We are proud to announce support from the Tony Elumelu Foundation to scale our CO₂ capture pilots in Rwanda.</p>
-      <span class="news-date">April 2025</span>
-    </article>
-  </div>
-</section>
-<footer>
-  <div class="footer-links">
-    <a href="about.html">About Us</a> | 
-    <a href="solutions.html">Solutions</a> | 
-    <a href="impact.html">Impact</a> | 
-    <a href="news.html">News</a> | 
-    <a href="contact.html">Contact Us</a> | 
-    <a href="careers.html">Careers</a> | 
-    <a href="partner.html">Partner With Us</a>
-  </div>
-  <p>&copy; 2025 EcoCapture Solutions Ltd</p>
-  <p class="sustainability">Proudly building climate tech in Africa for Africa.</p>
-</footer>
-<script src="script.js"></script>
-</body>
-</html>
+// Smooth fade-in on scroll
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('fade-in');
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.2 });
+
+document.querySelectorAll('section').forEach(section => {
+  observer.observe(section);
+});
+
+// Navbar shadow and logo fade on scroll
+window.addEventListener('scroll', () => {
+  const header = document.querySelector('header');
+  const brandBanner = document.querySelector('.brand-banner-horizontal');
+  // Navbar shadow
+  if (header) {
+    if(window.scrollY > 30) {
+      header.style.boxShadow = "0 4px 16px rgba(46,125,50,0.08)";
+    } else {
+      header.style.boxShadow = "0 2px 8px rgba(0,0,0,0.04)";
+    }
+  }
+  // Logo/name bar fade
+  if (brandBanner) {
+    if (window.scrollY > 60) {
+      brandBanner.classList.add('hide');
+      console.log('brand-banner-horizontal: hide');
+    } else {
+      brandBanner.classList.remove('hide');
+      console.log('brand-banner-horizontal: show');
+    }
+  }
+});
+
+// Hamburger menu
+const navToggle = document.querySelector('.nav-toggle');
+const navLinks = document.querySelector('.nav-links');
+if(navToggle && navLinks) {
+  navToggle.addEventListener('click', () => {
+    navLinks.classList.toggle('open');
+  });
+  navLinks.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => navLinks.classList.remove('open'));
+  });
+}
+
+// Partner logos clickable
+const partnerLinks = {
+  "partner-unipod.png": "https://unipod.rw/",
+  "partner-tef.png": "https://www.tonyelumelufoundation.org/"
+};
+document.querySelectorAll(".partner-logos img").forEach(logo => {
+  logo.addEventListener("click", () => {
+    const fileName = logo.src.split("/").pop();
+    if (partnerLinks[fileName]) {
+      window.open(partnerLinks[fileName], "_blank");
+    }
+  });
+});
+
+// Animated counters for impact stats
+document.querySelectorAll('.counter').forEach(counter => {
+  const updateCount = () => {
+    const target = +counter.getAttribute('data-target');
+    const count = +counter.innerText;
+    const increment = Math.ceil(target / 60);
+
+    if (count < target) {
+      counter.innerText = count + increment;
+      setTimeout(updateCount, 30);
+    } else {
+      counter.innerText = target;
+    }
+  };
+  updateCount();
+});
+
+// Contact form instant confirmation (for old form, safe to keep)
+const quickContact = document.getElementById('quick-contact-form');
+if (quickContact) {
+  quickContact.addEventListener('submit', function(e) {
+    e.preventDefault();
+    document.getElementById('contact-confirm').style.display = 'block';
+    this.reset();
+  });
+}
