@@ -770,12 +770,14 @@ section {
   width: 100%;
 }
 /* Center section titles for initiatives, team, and partners */
-.Our Initiatives h2,
+.project-gallery h2,
 .team h2,
-.partners h2 {
+.partners h2,
+.centered-title {
   text-align: center;
   margin-left: auto;
   margin-right: auto;
   width: 100%;
 }
+
 
