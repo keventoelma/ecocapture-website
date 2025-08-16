@@ -12,13 +12,27 @@ document.querySelectorAll('section').forEach(section => {
   observer.observe(section);
 });
 
-// Navbar scroll effect
+// Navbar shadow and logo fade on scroll
 window.addEventListener('scroll', () => {
   const header = document.querySelector('header');
-  if(window.scrollY > 30) {
-    header.style.boxShadow = "0 4px 16px rgba(46,125,50,0.08)";
-  } else {
-    header.style.boxShadow = "0 2px 8px rgba(0,0,0,0.04)";
+  const brandBanner = document.querySelector('.brand-banner-horizontal');
+  // Navbar shadow
+  if (header) {
+    if(window.scrollY > 30) {
+      header.style.boxShadow = "0 4px 16px rgba(46,125,50,0.08)";
+    } else {
+      header.style.boxShadow = "0 2px 8px rgba(0,0,0,0.04)";
+    }
+  }
+  // Logo/name bar fade
+  if (brandBanner) {
+    if (window.scrollY > 60) {
+      brandBanner.classList.add('hide');
+      console.log('brand-banner-horizontal: hide');
+    } else {
+      brandBanner.classList.remove('hide');
+      console.log('brand-banner-horizontal: show');
+    }
   }
 });
 
@@ -65,7 +79,7 @@ document.querySelectorAll('.counter').forEach(counter => {
   updateCount();
 });
 
-// Contact form instant confirmation
+// Contact form instant confirmation (for old form, safe to keep)
 const quickContact = document.getElementById('quick-contact-form');
 if (quickContact) {
   quickContact.addEventListener('submit', function(e) {
@@ -74,13 +88,3 @@ if (quickContact) {
     this.reset();
   });
 }
-// Hide brand banner on scroll
-window.addEventListener('scroll', function() {
-  const brandBanner = document.querySelector('.brand-banner-horizontal');
-  if (!brandBanner) return;
-  if (window.scrollY > 60) {
-    brandBanner.classList.add('hide');
-  } else {
-    brandBanner.classList.remove('hide');
-  }
-});
