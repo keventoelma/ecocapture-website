@@ -32,16 +32,16 @@ a:hover {
   margin-right: auto;
 }
 .navbar .logo-area img {
-  width: 48px;
-  height: 48px;
+  width: 60px;
+  height: 60px;
   border-radius: 8px;
-  background: #fff;
+  background: hwb(130 76% 13%);
   box-shadow: 0 2px 8px rgba(46,125,50,0.07);
 }
 .navbar .logo-area span {
   font-size: 1.3rem;
   font-weight: 700;
-  color: #2e7d32;
+  color: hwb(130 76% 13%);
   letter-spacing: 1px;
 }
 
@@ -51,7 +51,7 @@ header {
   height: 80px;
   padding: 0.5rem 0;
   box-sizing: border-box;
-  background: #fff;
+  background: #fff !important;
   box-shadow: 0 2px 8px rgba(0,0,0,0.04);
   transition: box-shadow 0.2s linear, background 0.2s linear;
   position: sticky;
@@ -63,6 +63,7 @@ header {
   margin: 0 auto;
   display: flex;
   align-items: center;
+  background: #fff !important;
   justify-content: flex-end;
   padding: 0 2rem;
   position: relative;
@@ -81,6 +82,7 @@ header {
   gap: 2rem;
   list-style: none;
   align-items: center;
+  background: #fff !important;
 }
 .nav-links li a {
   color: #2e7d32;
@@ -99,6 +101,23 @@ header {
   font-weight: 600;
   box-shadow: 0 2px 8px rgba(46,125,50,0.07);
 }
+/* Partner With Us nav button */
+.nav-links li a.partner-btn {
+  background: #2e7d32;
+  color: #fff !important;
+  border-radius: 20px;
+  padding: 0.5rem 1.3rem;
+  font-weight: 700;
+  box-shadow: 0 2px 8px rgba(46,125,50,0.07);
+  border: 2px solid #2e7d32;
+  transition: background 0.18s, color 0.18s, border 0.18s;
+}
+.nav-links li a.partner-btn:hover,
+.nav-links li a.partner-btn.active {
+  background: #1b5e20;
+  border-color: #1b5e20;
+  color: #fff !important;
+}
 
 /* Hamburger menu responsive */
 @media (max-width: 900px) {
@@ -108,7 +127,7 @@ header {
     position: absolute;
     top: 100%;
     left: 0;
-    background: #fff;
+    background: #fff !important;
     width: 100%;
     display: none;
     box-shadow: 0 2px 8px rgba(0,0,0,0.04);
@@ -534,22 +553,26 @@ header {
 
 /* --- PARTNER WITH US --- */
 .partner-with-us {
+  background: #e8f5e9 !important;      /* Soft green background */
+  color: #181918 !important;           /* Deep green text */
+  border: 2px solid #1b1c1b !important;/* Light green border */
+  box-shadow: 0 2px 12px rgba(23, 24, 23, 0.07) !important;
+  border-radius: 16px !important;
+  padding: 2rem 1.5rem !important;
   max-width: 700px;
   margin: 3rem auto;
-  background: #fff;
-  border-radius: 14px;
-  box-shadow: 0 2px 12px rgba(11, 104, 16, 0.07);
-  padding: 2rem 1rem;
-  color: #131313;
+  display: block !important;
+  visibility: visible !important;
+}
+.partner-with-us h3,
+.partner-with-us h2 {
+  color: #2e7d32 !important;           /* Brighter green for headings */
 }
 .partner-with-us ul {
   margin: 1rem 0 2rem 2rem;
   padding: 0;
   font-size: 1rem;
-}
-.partner-with-us h3 {
-  margin-top: 2rem;
-  color: #1a8d20;
+  color: #2e7d32 !important;           /* Slightly darker for contrast */
 }
 .partner-qr {
   display: flex;
@@ -566,7 +589,7 @@ header {
   margin-bottom: 0.5rem;
 }
 .partner-qr span {
-  color: #2e7d32;
+  color: #171817;
   font-weight: 600;
   font-size: 1.1rem;
 }
@@ -649,15 +672,8 @@ section {
   .project-card { width: 95vw; }
   .contact-details { flex-direction: column; align-items: center; }
 }
-.partner-with-us, .partner-with-us * {
-  color: #222 !important;
-  opacity: 1 !important;
-  background: #fff !important;
-}
-.partner-with-us {
-  display: block !important;
-  visibility: visible !important;
-}
+
+/* --- CONTACT INFO SQUARE --- */
 .contact-info-square {
   display: flex;
   flex-direction: column;
@@ -703,7 +719,7 @@ section {
   justify-content: center !important;
   gap: 1rem !important;
   padding: 1.2rem 0 0.5rem 0 !important;
-  background: #e8f5e9 !important;
+  background: hwb(135 94% 5%) !important;
   transition: opacity 0.5s, height 0.5s, padding 0.5s !important;
   opacity: 1 !important;
   height: auto !important;
@@ -743,7 +759,7 @@ section {
 }
 .news h2, .careers h2, .news h3, .careers h3, .news h4, .careers h4 {
   color: #134923 !important;
-  font-weight: 700;
+  font-weight: 800;
 } 
 /* Center section titles for team and partners */
 .team h2,
