@@ -636,7 +636,6 @@ footer {
 }
 .footer-links a {
   color: #fff;
-  text-decoration: underline;
   margin: 0 0.5rem;
 }
 .sustainability {
@@ -1392,3 +1391,4 @@ section {
     display: flex !important;
   }
 }
+
